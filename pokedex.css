@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    scroll-behavior: smooth;
+    background-image: url(./img/pokedex-wallpaper.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.arrow {
+    cursor: pointer;
+}
+
+.search_names {
+    display: flex;
+    justify-content: center;
+    margin: 32px;
+}
+
+.search_field {
+    height: 20px;
+    width: 150px;
+    border-radius: 10px;
+    padding-left: 90px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    opacity: 0.5;
+    position: absolute;
+}
+
+.search_field:focus {
+    padding-left: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 200px;
+    height: 20px;
+    opacity: 1;
+    font-size: 16px;
+    outline: none;
+}
+
+.search_field::placeholder {
+    font-size: 16px;
+    font-style: italic;
+}
+
+.search_icon {
+    position: relative;
+    height: 20px;
+    top: 10px;
+    right: 90px;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: -16px;
+    margin-bottom: 16px;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 16px;
+}
+
+.gallery_btn {
+    border-radius: 10px;
+    cursor: pointer;
+    height: 40px;
+    width: 100px;
+    background-color: transparent;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pokeball-container {
+    margin: 24px;
+    cursor: pointer;
+}
+
+.pokeball-container:hover {
+    transform: scale(1.2);
+}
+
+.gallery_btn:hover {
+    transform: scale(1.2);
+}
+
+.removeHover {
+    pointer-events: none;
+}
+
+.poke_pic {
+    width: 120px;
+    height: 120px;
+    margin-left: 32px;
+}
+
+.element {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    text-align: center;
+    font-size: 25px;
+    margin-left: 48px;
+    margin-right: 48px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}

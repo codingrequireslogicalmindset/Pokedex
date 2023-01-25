@@ -1,0 +1,158 @@
+.d-none {
+    display: none;
+}
+
+.pop-up {
+    background: rgba(165, 184, 216, 0.385);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+}
+
+.card_content {
+    margin-bottom: 131px;
+}
+
+.card-box-total {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.type-box {
+    display: flex;
+}
+
+.type1, .type2 {
+    width: 75px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.25);
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 16px;
+    margin-left: 16px;
+    margin-bottom: 32px;
+    color: black;
+}
+
+.card-box-id {
+    position: absolute;
+    right: 28px;
+    top: 84px;
+    color: white;
+}
+
+.card-box2 {
+    background-color: white;
+    width: 340px;
+    height: 282px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    margin-top: -16px;
+}
+
+.nav-sections {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    border-bottom-color: rgb(223, 211, 211);
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    padding-bottom: 16px;
+    padding-top: 16px;
+}
+
+.nav-section {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.nav-section-clicked {
+    padding-bottom: 16px;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+    opacity: 1;
+}
+
+.card-box1 {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pokemon-Name-Main-Paige {
+    padding-left: 16px;
+    padding-right: 16px; 
+}
+
+.card-box-poke-pic {
+    width: 200px;
+    height: 200px;
+}
+
+.btn_nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn_nav_search {
+    display: flex;
+    justify-content: center;
+}
+
+.btn_popUp {
+    cursor: pointer;
+}
+
+.about {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 15px 8px;
+    margin-right: 75px;
+    margin-top: -10px;
+}
+
+.progress-bar-box {
+    background-color: lightgray;
+}
+
+.progress-bar {
+    height: 4px;
+    background-color: green;
+}
+
+@media(max-width: 450px) {
+
+    table {
+        margin-right: 32px;
+    }
+
+    .card-box1 {
+        width: 300px;
+    }
+
+    .card-box2 {
+        width: 300px;
+    }
+}

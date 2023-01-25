@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="pokedex.css">
+    <link rel="stylesheet" href="pop-up.css">
+    <script src="pokedex.js"></script>
+    <script src="pop-up.js"></script>
+    <script src="color.js"></script>
+    <link rel="icon" href="./favicon/pokedex-wallpapers.jpg">
+</head>
+
+<body onload="loadPokemons()">
+    <div class="search_names">
+        <img id="search_icon" class="search_icon" src="./img/search_icon.png">
+        <input class="search_field" type="text" id="search" onkeydown="filterNames()" placeholder="Searching" onfocus="this.placeholder=''" onblur="this.placeholder='Searching'">
+    </div>
+    <div class="gallery">
+        <button onclick="loadPokemons()" id="gallery_btn" class="gallery_btn">Gallery Mode</button>
+    </div>
+    <div id="main-nav" class="main-nav">
+        <img class="arrow" onclick="previous()" src="./img/arrow-left.png">
+        <img class="arrow" onclick="next()" src="./img/arrow-right.png">
+    </div>
+    <div class="container" id="container"></div>
+    <div class="container" id="container2"></div>
+    <div class="container" id="container3"></div>
+    <div class="container" id="container4"></div>
+</body>
+
+</html>
