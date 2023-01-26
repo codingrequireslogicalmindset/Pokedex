@@ -52,7 +52,7 @@ function about(i) {
     document.getElementById(`evolution${i}`).classList.remove('nav-section-clicked');
     moves_clicked = false;
     document.getElementById(`moves${i}`).classList.remove('nav-section-clicked');
-    document.getElementById(`card-content(${i})`).style = "margin-bottom: 131px;"
+    document.getElementById(`card-content(${i})`).style = "margin-bottom: 130px;"
     document.getElementById(`card-content(${i})`).innerHTML = '';
     document.getElementById(`card-content(${i})`).innerHTML += `
     <div class="about" id="progressBarBox${i}">
@@ -282,7 +282,7 @@ function aboutSearch(i) {
     document.getElementById(`evolution${i}`).classList.remove('nav-section-clicked');
     moves_clicked = false;
     document.getElementById(`moves${i}`).classList.remove('nav-section-clicked');
-    document.getElementById(`card-content(${i})`).style = "margin-bottom: 131px;"
+    document.getElementById(`card-content(${i})`).style = "margin-bottom: 130px;"
     document.getElementById(`card-content(${i})`).innerHTML = '';
     document.getElementById(`card-content(${i})`).innerHTML += `
     <div class="about" id="progressBarBox${i}">
