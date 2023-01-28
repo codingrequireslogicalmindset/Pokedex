@@ -291,28 +291,24 @@ function capitalizeFirstLetter(string) {
 async function filterNames() {
     document.getElementById('main-nav').classList.add('d-none');
     document.getElementById('gallery_btn').classList.remove('d-none');
-
     document.getElementById('search_icon').classList.remove('d-none');
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
-    console.log(search);
     document.getElementById('container2').innerHTML = '';
     document.getElementById('container3').innerHTML = '';
     document.getElementById('container4').innerHTML = '';
     let container = document.getElementById('container');
     container.innerHTML = '';
     loading = true;
-
     for (let i = 0; i < 200; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i + 1}`;
         let response = await fetch(url);
         searchPokemon = await response.json();
         pokemonAmount++;
         let searchBox = searchPokemon.name;
-        if (searchBox.toLowerCase().includes(search)) {
+        if (searchBox.indexOf(search) == 0 && search.length >= 1) {
             container.innerHTML += `
             <div onclick="openPopUpSearch(${i})" class="pokeball-container" id="pokeballContainer${i}">
-                <img class="poke_pic" id="pokePic${i}" src="${searchPokemon["sprites"]['other']['official-artwork']['front_default']}">
                 <h2 class="pokemon-Name-Main-Paige" id="pokename${i}">#${searchPokemon.id} ${capitalizeFirstLetter(searchBox)}</h2>
                 <div class="element" id="element${i}">${capitalizeFirstLetter(searchPokemon.types['0'].type.name)}</div>
             </div>
