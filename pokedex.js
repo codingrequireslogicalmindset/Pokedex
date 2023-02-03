@@ -295,6 +295,7 @@ async function openPopUp(i) {
 function closePopUp(i) {
     document.getElementById(`popUp${i}`).classList.add('d-none');
     document.getElementById('body').classList.remove('prevent-scrolling');
+    document.getElementById('search').focus();
 }
 
 function imgSlide(i) {
@@ -339,7 +340,7 @@ function filterNames() {
     document.getElementById('container3').innerHTML = '';
     document.getElementById('container4').innerHTML = '';
     document.getElementById('container').innerHTML = '';
-    let search = document.getElementById('search').value.toLowerCase();
+    let search = document.getElementById('search').value.toLowerCase().trim();
     validation(search);
     filterLoop(loading, search);
     document.getElementById('search').focus();
@@ -353,7 +354,7 @@ function validation(search) {
         document.getElementById('search').focus();
         return false;
     } else if(!search.match(valid)) {
-        alert('Type in only characters!');
+        alert('Type in only characters without any spaces between!');
         document.getElementById('search').focus();
         return false;
     }
