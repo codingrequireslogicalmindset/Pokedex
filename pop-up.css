@@ -133,6 +133,18 @@ table {
     margin-top: -10px;
 }
 
+.table-evolution {
+    border-collapse: separate;
+    border-spacing: 55px 8px;
+    margin-left: -40px;
+    margin-top: -10px;
+    white-space: nowrap;
+}
+
+.td-center {
+    text-align: center;
+}
+
 .progress-bar-box {
     background-color: lightgray;
 }
@@ -148,6 +160,10 @@ table {
         margin-right: 32px;
     }
 
+    .card-box-total {
+        height: 100%;
+    }
+
     .card-box1 {
         width: 300px;
     }
@@ -155,4 +171,5 @@ table {
     .card-box2 {
         width: 300px;
     }
+
 }

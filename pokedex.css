@@ -8,6 +8,10 @@ body {
     font-family: 'Comic Neue';
 }
 
+.prevent-scrolling {
+    overflow: hidden;
+}
+
 .arrow {
     cursor: pointer;
 }
@@ -22,20 +26,18 @@ body {
     height: 20px;
     width: 150px;
     border-radius: 10px;
-    padding-left: 90px;
+    padding-left: 70px;
     padding-top: 8px;
     padding-bottom: 8px;
-    opacity: 0.5;
     position: absolute;
 }
 
 .search_field:focus {
-    padding-left: 16px;
+    padding-left: 80px;
     padding-top: 8px;
     padding-bottom: 8px;
-    width: 200px;
+    width: 150px;
     height: 20px;
-    opacity: 1;
     font-size: 16px;
     outline: none;
 }
@@ -49,15 +51,33 @@ body {
     position: relative;
     height: 20px;
     top: 10px;
-    right: 90px;
+    left: 85px;
+    z-index: 1;
+    cursor: pointer;
 }
 
-.main-nav {
+.search_icon:hover {
+    transform: scale(1.2);
+}
+
+.arrow-nav-start {
     display: flex;
-    justify-content: space-evenly;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: -16px;
+    justify-content: start;
+    align-items: center;
+    gap: 24px;
+    margin-left: 32px;
+    margin-bottom: 16px;
+    margin-top: -32px;
+}
+
+.arrow-nav-end {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 24px;
+    margin-right: 32px;
+    margin-left: 32px;
+    margin-top: 16px;
     margin-bottom: 16px;
 }
 

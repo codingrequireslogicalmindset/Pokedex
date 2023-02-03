@@ -54,21 +54,7 @@ function about(i) {
     document.getElementById(`moves${i}`).classList.remove('nav-section-clicked');
     document.getElementById(`card-content(${i})`).style = "margin-bottom: 130px;"
     document.getElementById(`card-content(${i})`).innerHTML = '';
-    document.getElementById(`card-content(${i})`).innerHTML += `
-    <div class="about" id="progressBarBox${i}">
-        <span>Weight in hg (hectograms)</span>
-        <span><b>${currentPokemonPopUp['weight']}</b></span>
-        <div>
-            <div id="progressBar${i}"></div>
-        </div>  
-    </div>
-    <div class="about" id="progressBarBox${i}">
-        <span>Height in dm (decimetres)</span>
-        <span><b>${currentPokemonPopUp['height']}</b></span>
-        <div>
-            <div id="progressBar${i}"></div>
-        </div>
-    </div>`;
+    document.getElementById(`card-content(${i})`).innerHTML += getAbout(i);
 }
 
 function baseStats(i) {
@@ -82,7 +68,57 @@ function baseStats(i) {
     document.getElementById(`moves${i}`).classList.remove('nav-section-clicked');
     document.getElementById(`card-content(${i})`).style = "margin-bottom: 8px;"
     document.getElementById(`card-content(${i})`).innerHTML = '';
-    document.getElementById(`card-content(${i})`).innerHTML += `
+    document.getElementById(`card-content(${i})`).innerHTML += getBaseStats();
+}
+
+function evolution(i) {
+    evolution_clicked = true;
+    document.getElementById(`evolution${i}`).classList.add('nav-section-clicked');
+    about_clicked = false;
+    document.getElementById(`about${i}`).classList.remove('nav-section-clicked');
+    baseStats_clicked = false;
+    document.getElementById(`baseStat${i}`).classList.remove('nav-section-clicked');
+    moves_clicked = false;
+    document.getElementById(`moves${i}`).classList.remove('nav-section-clicked');
+    document.getElementById(`card-content(${i})`).innerHTML = '';
+    getEvolution(i);
+}
+
+function moves(i) {
+    moves_clicked = true;
+    document.getElementById(`moves${i}`).classList.add('nav-section-clicked');
+    about_clicked = false;
+    document.getElementById(`about${i}`).classList.remove('nav-section-clicked');
+    baseStats_clicked = false;
+    document.getElementById(`baseStat${i}`).classList.remove('nav-section-clicked');
+    evolution_clicked = false;
+    document.getElementById(`evolution${i}`).classList.remove('nav-section-clicked');
+    document.getElementById(`card-content(${i})`).style = "margin-bottom: 78px;"
+    document.getElementById(`card-content(${i})`).innerHTML = '';
+    document.getElementById(`card-content(${i})`).innerHTML += getMoves(i);
+}
+
+function getAbout(i) {
+    return `
+    <div class="about" id="progressBarBox${i}">
+        <span>Weight in hg (hectograms)</span>
+        <span><b>${currentPokemonPopUp['weight']}</b></span>
+        <div>
+            <div id="progressBar${i}"></div>
+        </div>  
+    </div>
+    <div class="about" id="progressBarBox${i}">
+        <span>Height in dm (decimetres)</span>
+        <span><b>${currentPokemonPopUp['height']}</b></span>
+        <div>
+            <div id="progressBar${i}"></div>
+        </div>
+    </div>
+    `;
+}
+
+function getBaseStats() {
+    return `
     <table>
         <tr>
             <td>HP</td>
@@ -138,77 +174,48 @@ function baseStats(i) {
                 </div>
             </td>
         </tr>
-    </table>`;
+    </table>
+    `;
 }
 
-function evolution(i) {
-    evolution_clicked = true;
-    document.getElementById(`evolution${i}`).classList.add('nav-section-clicked');
-    about_clicked = false;
-    document.getElementById(`about${i}`).classList.remove('nav-section-clicked');
-    baseStats_clicked = false;
-    document.getElementById(`baseStat${i}`).classList.remove('nav-section-clicked');
-    moves_clicked = false;
-    document.getElementById(`moves${i}`).classList.remove('nav-section-clicked');
-    document.getElementById(`card-content(${i})`).innerHTML = '';
+function getEvolution(i) {
     if (currentPokemonPopUp['abilities']['1']) {
-        document.getElementById(`card-content(${i})`).style = "margin-bottom: 104px;"
+        document.getElementById(`card-content(${i})`).style = "margin-bottom: 92px;"
         document.getElementById(`card-content(${i})`).innerHTML += `
-        <div class="about" id="progressBarBox${i}">
-            <span>Single-Ability</span>
-            <span><b>${capitalizeFirstLetter(currentPokemonPopUp.abilities['0'].ability.name)}</b></span>
-            <div>
-                <div id="progressBar${i}"></div>
-            </div>
-        </div>
-        <div class="about" id="progressBarBox${i}">
-            <span>Dual-Ability</span>
-            <span><b>${capitalizeFirstLetter(currentPokemonPopUp.abilities['1'].ability.name)}</b></span>
-            <div>
-                <div id="progressBar${i}"></div>
-            </div>
-        </div>
-        <div class="about" id="progressBarBox${i}">
-            <span>Base Experience</span>
-            <span><b>${currentPokemonPopUp['base_experience']}</b></span>
-            <div>
-                <div id="progressBar${i}"></div>
-            </div>  
-        </div>
+        <table class="table-evolution">
+            <tr>
+                <td>Single-Ability</td>
+                <td class="td-center"><b>${capitalizeFirstLetter(currentPokemonPopUp.abilities['0'].ability.name)}</b></td>
+            </tr>
+            <tr>
+                <td>Dual-Ability</td>
+                <td class="td-center"><b>${capitalizeFirstLetter(currentPokemonPopUp.abilities['1'].ability.name)}</b></td>
+            </tr>
+            <tr>
+                <td>Base Experience</td>
+                <td class="td-center"><b>${currentPokemonPopUp['base_experience']}</b></td>
+            </tr>
+        </table>
         `;}
     else {
-        document.getElementById(`card-content(${i})`).style = "margin-bottom: 130px;"
+        document.getElementById(`card-content(${i})`).style = "margin-bottom: 120px;"
         document.getElementById(`card-content(${i})`).innerHTML += `
-        <div class="about" id="progressBarBox${i}">
-            <span>Single-Ability</span>
-            <span><b>${capitalizeFirstLetter(currentPokemonPopUp.abilities['0'].ability.name)}</b></span>
-            <div>
-                <div id="progressBar${i}"></div>
-            </div>
-        </div>
-        <div class="about" id="progressBarBox${i}">
-            <span>Base Experience</span>
-            <span><b>${currentPokemonPopUp['base_experience']}</b></span>
-            <div>
-                <div id="progressBar${i}"></div>
-            </div>  
-        </div>
+        <table class="table-evolution">
+            <tr>
+                <td>Single-Ability</td>
+                <td class="td-center"><b>${capitalizeFirstLetter(currentPokemonPopUp.abilities['0'].ability.name)}</b></td>
+            </tr>
+            <tr>
+                <td>Base Experience</td>
+                <td class="td-center"><b>${currentPokemonPopUp['base_experience']}</b></td>
+            </tr>
+        </table>
         `;
     }
 }
 
-function moves(i) {
-    moves_clicked = true;
-    document.getElementById(`moves${i}`).classList.add('nav-section-clicked');
-    about_clicked = false;
-    document.getElementById(`about${i}`).classList.remove('nav-section-clicked');
-    baseStats_clicked = false;
-    document.getElementById(`baseStat${i}`).classList.remove('nav-section-clicked');
-    evolution_clicked = false;
-    document.getElementById(`evolution${i}`).classList.remove('nav-section-clicked');
-    document.getElementById(`card-content(${i})`).style = "margin-bottom: 78px;"
-    document.getElementById(`card-content(${i})`).innerHTML = '';
-    document.getElementById(`card-content(${i})`).innerHTML += `
+function getMoves(i) {
+    return `
     <div class="about" id="progressBarBox${i}">
         <span>Special Move 1</span>
         <span><b>${capitalizeFirstLetter(currentPokemonPopUp.moves['0'].move.name)}</b></span>
@@ -228,7 +235,7 @@ function moves(i) {
     `;
 }
 
-// Hier wird das PopUp auf die Searchfunktion umgeschrieben, so dass diese in der Suchleiste abgerufen werden können! 
+// PopUp getting customized for the filter function and will be displayed in the search bar! 
 
 function renderPopUpSearch(i) {
     return `
@@ -284,21 +291,7 @@ function aboutSearch(i) {
     document.getElementById(`moves${i}`).classList.remove('nav-section-clicked');
     document.getElementById(`card-content(${i})`).style = "margin-bottom: 130px;"
     document.getElementById(`card-content(${i})`).innerHTML = '';
-    document.getElementById(`card-content(${i})`).innerHTML += `
-    <div class="about" id="progressBarBox${i}">
-        <span>Weight in hg (hectograms)</span>
-        <span><b>${searchPokemonPopUp['weight']}</b></span>
-        <div>
-            <div id="progressBar${i}" style="width: 69%"></div>
-        </div>  
-    </div>
-    <div class="about" id="progressBarBox${i}">
-        <span>Height in dm (decimetres)</span>
-        <span><b>${searchPokemonPopUp['height']}</b></span>
-        <div>
-            <div id="progressBar${i}" style="width: 7%;"></div>
-        </div>
-    </div>`;
+    document.getElementById(`card-content(${i})`).innerHTML += getAboutSearch(i);
 }
 
 function baseStatsSearch(i) {
@@ -312,7 +305,57 @@ function baseStatsSearch(i) {
     document.getElementById(`moves${i}`).classList.remove('nav-section-clicked');
     document.getElementById(`card-content(${i})`).style = "margin-bottom: 8px;"
     document.getElementById(`card-content(${i})`).innerHTML = '';
-    document.getElementById(`card-content(${i})`).innerHTML += `
+    document.getElementById(`card-content(${i})`).innerHTML += getBaseStatsSearch();
+}
+
+function evolutionSearch(i) {
+    evolution_clicked = true;
+    document.getElementById(`evolution${i}`).classList.add('nav-section-clicked');
+    about_clicked = false;
+    document.getElementById(`about${i}`).classList.remove('nav-section-clicked');
+    baseStats_clicked = false;
+    document.getElementById(`baseStat${i}`).classList.remove('nav-section-clicked');
+    moves_clicked = false;
+    document.getElementById(`moves${i}`).classList.remove('nav-section-clicked');
+    document.getElementById(`card-content(${i})`).innerHTML = '';
+    getEvolutionSearch(i);
+}
+
+function movesSearch(i) {
+    moves_clicked = true;
+    document.getElementById(`moves${i}`).classList.add('nav-section-clicked');
+    about_clicked = false;
+    document.getElementById(`about${i}`).classList.remove('nav-section-clicked');
+    baseStats_clicked = false;
+    document.getElementById(`baseStat${i}`).classList.remove('nav-section-clicked');
+    evolution_clicked = false;
+    document.getElementById(`evolution${i}`).classList.remove('nav-section-clicked');
+    document.getElementById(`card-content(${i})`).style = "margin-bottom: 78px;"
+    document.getElementById(`card-content(${i})`).innerHTML = '';
+    document.getElementById(`card-content(${i})`).innerHTML += getMovesSearch(i);
+}
+
+function getAboutSearch(i) {
+    return `
+    <div class="about" id="progressBarBox${i}">
+        <span>Weight in hg (hectograms)</span>
+        <span><b>${searchPokemonPopUp['weight']}</b></span>
+        <div>
+            <div id="progressBar${i}"></div>
+        </div>  
+    </div>
+    <div class="about" id="progressBarBox${i}">
+        <span>Height in dm (decimetres)</span>
+        <span><b>${searchPokemonPopUp['height']}</b></span>
+        <div>
+            <div id="progressBar${i}"></div>
+        </div>
+    </div>
+    `;
+}
+
+function getBaseStatsSearch() {
+    return `
     <table>
         <tr>
             <td>HP</td>
@@ -368,77 +411,48 @@ function baseStatsSearch(i) {
                 </div>
             </td>
         </tr>
-    </table>`;
+    </table>
+    `;
 }
 
-function evolutionSearch(i) {
-    evolution_clicked = true;
-    document.getElementById(`evolution${i}`).classList.add('nav-section-clicked');
-    about_clicked = false;
-    document.getElementById(`about${i}`).classList.remove('nav-section-clicked');
-    baseStats_clicked = false;
-    document.getElementById(`baseStat${i}`).classList.remove('nav-section-clicked');
-    moves_clicked = false;
-    document.getElementById(`moves${i}`).classList.remove('nav-section-clicked');
-    document.getElementById(`card-content(${i})`).innerHTML = '';
+function getEvolutionSearch(i) {
     if (searchPokemonPopUp['abilities']['1']) {
-        document.getElementById(`card-content(${i})`).style = "margin-bottom: 104px;"
+        document.getElementById(`card-content(${i})`).style = "margin-bottom: 92px;"
         document.getElementById(`card-content(${i})`).innerHTML += `
-        <div class="about" id="progressBarBox${i}">
-            <span>Single-Ability</span>
-            <span><b>${capitalizeFirstLetter(searchPokemonPopUp.abilities['0'].ability.name)}</b></span>
-            <div>
-                <div id="progressBar${i}"></div>
-            </div>
-        </div>
-        <div class="about" id="progressBarBox${i}">
-            <span>Dual-Ability</span>
-            <span><b>${capitalizeFirstLetter(searchPokemonPopUp.abilities['1'].ability.name)}</b></span>
-            <div>
-                <div id="progressBar${i}"></div>
-            </div>
-        </div>
-        <div class="about" id="progressBarBox${i}">
-            <span>Base Experience</span>
-            <span><b>${searchPokemonPopUp['base_experience']}</b></span>
-            <div>
-                <div id="progressBar${i}"></div>
-            </div>  
-        </div>
+        <table class="table-evolution">
+            <tr>
+                <td>Single-Ability</td>
+                <td class="td-center"><b>${capitalizeFirstLetter(searchPokemonPopUp.abilities['0'].ability.name)}</b></td>
+            </tr>
+            <tr>
+                <td>Dual-Ability</td>
+                <td class="td-center"><b>${capitalizeFirstLetter(searchPokemonPopUp.abilities['1'].ability.name)}</b></td>
+            </tr>
+            <tr>
+                <td>Base Experience</td>
+                <td class="td-center"><b>${searchPokemonPopUp['base_experience']}</b></td>
+            </tr>
+        </table>
         `;}
     else {
-        document.getElementById(`card-content(${i})`).style = "margin-bottom: 130px;"
+        document.getElementById(`card-content(${i})`).style = "margin-bottom: 120px;"
         document.getElementById(`card-content(${i})`).innerHTML += `
-        <div class="about" id="progressBarBox${i}">
-            <span>Single-Ability</span>
-            <span><b>${capitalizeFirstLetter(searchPokemonPopUp.abilities['0'].ability.name)}</b></span>
-            <div>
-                <div id="progressBar${i}"></div>
-            </div>
-        </div>
-        <div class="about" id="progressBarBox${i}">
-            <span>Base Experience</span>
-            <span><b>${searchPokemonPopUp['base_experience']}</b></span>
-            <div>
-                <div id="progressBar${i}"></div>
-            </div>  
-        </div>
+        <table class="table-evolution">
+            <tr>
+                <td>Single-Ability</td>
+                <td class="td-center"><b>${capitalizeFirstLetter(searchPokemonPopUp.abilities['0'].ability.name)}</b></td>
+            </tr>
+            <tr>
+                <td>Base Experience</td>
+                <td class="td-center"><b>${searchPokemonPopUp['base_experience']}</b></td>
+            </tr>
+        </table>
         `;
     }
 }
 
-function movesSearch(i) {
-    moves_clicked = true;
-    document.getElementById(`moves${i}`).classList.add('nav-section-clicked');
-    about_clicked = false;
-    document.getElementById(`about${i}`).classList.remove('nav-section-clicked');
-    baseStats_clicked = false;
-    document.getElementById(`baseStat${i}`).classList.remove('nav-section-clicked');
-    evolution_clicked = false;
-    document.getElementById(`evolution${i}`).classList.remove('nav-section-clicked');
-    document.getElementById(`card-content(${i})`).style = "margin-bottom: 78px;"
-    document.getElementById(`card-content(${i})`).innerHTML = '';
-    document.getElementById(`card-content(${i})`).innerHTML += `
+function getMovesSearch(i) {
+    return `
     <div class="about" id="progressBarBox${i}">
         <span>Special Move 1</span>
         <span><b>${capitalizeFirstLetter(searchPokemonPopUp.moves['0'].move.name)}</b></span>

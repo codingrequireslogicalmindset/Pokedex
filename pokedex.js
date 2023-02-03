@@ -1,9 +1,13 @@
 let currentPokemon;
+let searchPokemon;
 let currentPokemonPopUp;
+let searchPokemonPopUp;
 let loading = false;
+let page = false;
 let page0 = false;
 let page1 = false;
 let page2 = false;
+let pagedeleteAll = false;
 let page0delete = false;
 let page1delete = false;
 let page2delete = false;
@@ -14,49 +18,76 @@ function getId(id) {
 
 function next() {
     if (page2) {
+        page = false;
         page0 = false;
         page1 = false;
         page2 = false;
         loadPokemonsPage3();
     }
     if (page1) {
+        page = false;
         page0 = false;
         page1 = false;
         page2 = true;
         loadPokemonsPage2();
     }
     if (page0) {
+        page = false;
         page0 = false;
         page1 = true;
         page2 = false;
-        loadPokemonsPage1()
+        loadPokemonsPage1();
+    }
+    if (page) {
+        page = false;
+        page0 = true;
+        page1 = false;
+        page2 = false;
+        loadPokemons();
     }
 }
 
 function previous() {
+    if (pagedeleteAll) {
+        document.getElementById('container').innerHTML = '';
+        page = true
+        page0 = false;
+        page1 = false;
+        page2 = false;
+        pagedeleteAll = false;
+        page0delete = false;
+        page1delete = false;
+        page2delete = false;
+    }
     if (page0delete) {
         document.getElementById('container2').innerHTML = '';
+        page = false;
         page0 = true;
         page1 = false;
         page2 = false;
+        pagedeleteAll = true;
         page0delete = false;
         page1delete = false;
         page2delete = false;
     }
     if (page1delete) {
         document.getElementById('container3').innerHTML = '';
+        page = false;
         page0 = false;
         page1 = true;
         page2 = false;
+        pagedeleteAll = false;
         page0delete = true;
         page1delete = false;
         page2delete = false;
     }
     if (page2delete) {
         document.getElementById('container4').innerHTML = '';
+        page = false;
         page0 = false;
         page1 = false;
         page2 = true;
+        pagedeleteAll = false;
         page0delete = false;
         page1delete = true;
         page2delete = false;
@@ -64,7 +95,8 @@ function previous() {
 }
 
 async function loadPokemons() {
-    document.getElementById('main-nav').classList.remove('d-none');
+    document.getElementById('arrow-nav-start').classList.remove('d-none');
+    document.getElementById('arrow-nav-end').classList.remove('d-none');
     document.getElementById('gallery_btn').classList.add('d-none');
     document.getElementById('search').value = '';
     document.getElementById('container').innerHTML = '';
@@ -78,13 +110,15 @@ async function loadPokemons() {
         changeColor(i);
         if (loading) {
             document.getElementById(`pokeballContainer${i}`).classList.add('removeHover');
-            document.getElementById('main-nav').classList.add('removeHover');
-            document.getElementById('search').disabled = true;
+            document.getElementById('arrow-nav-start').classList.add('removeHover');
+            document.getElementById('arrow-nav-end').classList.add('removeHover');
+            document.getElementById('search_icon').classList.add('removeHover');
         }
     }
     addPointerEvent()
     loading = false;
     page0 = true;
+    pagedeleteAll = true;
 }
 
 async function loadPokemonsPage1() {
@@ -99,12 +133,14 @@ async function loadPokemonsPage1() {
         changeColor(i);
         if (loading) {
             document.getElementById(`pokeballContainer${i}`).classList.add('removeHover');
-            document.getElementById('main-nav').classList.add('removeHover');
-            document.getElementById('search').disabled = true;
+            document.getElementById('arrow-nav-start').classList.add('removeHover');
+            document.getElementById('arrow-nav-end').classList.add('removeHover');
+            document.getElementById('search_icon').classList.add('removeHover');
         }
     }
     addPointerEvent1()
     loading = false;
+    pagedeleteAll = false;
     page0delete = true;
 }
 
@@ -120,8 +156,9 @@ async function loadPokemonsPage2() {
         changeColor(i);
         if (loading) {
             document.getElementById(`pokeballContainer${i}`).classList.add('removeHover');
-            document.getElementById('main-nav').classList.add('removeHover');
-            document.getElementById('search').disabled = true;
+            document.getElementById('arrow-nav-start').classList.add('removeHover');
+            document.getElementById('arrow-nav-end').classList.add('removeHover');
+            document.getElementById('search_icon').classList.add('removeHover');
         }
     }
     addPointerEvent2()
@@ -142,8 +179,9 @@ async function loadPokemonsPage3() {
         changeColor(i);
         if (loading) {
             document.getElementById(`pokeballContainer${i}`).classList.add('removeHover');
-            document.getElementById('main-nav').classList.add('removeHover');
-            document.getElementById('search').disabled = true;
+            document.getElementById('arrow-nav-start').classList.add('removeHover');
+            document.getElementById('arrow-nav-end').classList.add('removeHover');
+            document.getElementById('search_icon').classList.add('removeHover');
         }
     }
     addPointerEvent3()
@@ -156,42 +194,46 @@ function addPointerEventSearch() {
     document.getElementById(`container`).classList.remove('removeHover');
     document.getElementById('gallery_btn').classList.remove('removeHover');
     document.getElementById('search_icon').classList.remove('d-none');
-    document.getElementById('search').disabled = false;
+    document.getElementById('search_icon').classList.remove('removeHover');
 }
 
 function addPointerEvent() {
     for (let i = 0; i < 50; i++) {
         document.getElementById(`pokeballContainer${i}`).classList.remove('removeHover');
-        document.getElementById('main-nav').classList.remove('removeHover');
-        document.getElementById('search').disabled = false;
+        document.getElementById('arrow-nav-start').classList.remove('removeHover');
+        document.getElementById('arrow-nav-end').classList.remove('removeHover');
+        document.getElementById('search_icon').classList.remove('removeHover');
     }
 }
 
 function addPointerEvent1() {
     for (let i = 50; i < 100; i++) {
         document.getElementById(`pokeballContainer${i}`).classList.remove('removeHover');
-        document.getElementById('main-nav').classList.remove('removeHover');
-        document.getElementById('search').disabled = false;
+        document.getElementById('arrow-nav-start').classList.remove('removeHover');
+        document.getElementById('arrow-nav-end').classList.remove('removeHover');
+        document.getElementById('search_icon').classList.remove('removeHover');
     }
 }
 
 function addPointerEvent2() {
     for (let i = 100; i < 150; i++) {
         document.getElementById(`pokeballContainer${i}`).classList.remove('removeHover');
-        document.getElementById('main-nav').classList.remove('removeHover');
-        document.getElementById('search').disabled = false;
+        document.getElementById('arrow-nav-start').classList.remove('removeHover');
+        document.getElementById('arrow-nav-end').classList.remove('removeHover');
+        document.getElementById('search_icon').classList.remove('removeHover');
     }
 }
 
 function addPointerEvent3() {
     for (let i = 150; i < 200; i++) {
         document.getElementById(`pokeballContainer${i}`).classList.remove('removeHover');
-        document.getElementById('main-nav').classList.remove('removeHover');
-        document.getElementById('search').disabled = false;
+        document.getElementById('arrow-nav-start').classList.remove('removeHover');
+        document.getElementById('arrow-nav-end').classList.remove('removeHover');
+        document.getElementById('search_icon').classList.remove('removeHover');
     }
 }
 
-// Hier werden alle Pokemons jeweils (i) geladen!
+// Every Pokemon getting loaded separately!
 
 function renderPokemons(i) {
     return `
@@ -215,7 +257,7 @@ function checkType(i) {
     }
 }
 
-// Gallery-Modus: Hier kann zwischen den Poekodex-Bildern hin- und hergewechselt werden!
+// Gallery-Mode: Here you can switch between the Pokemon PopUp cards!
 
 let pokemonAmount = 0;
 let about_clicked = false;
@@ -225,6 +267,7 @@ let moves_clicked = false;
 
 async function openPopUp(i) {
     document.getElementById(`popUp${i}`).classList.remove('d-none');
+    document.getElementById('body').classList.add('prevent-scrolling');
     let url = `https://pokeapi.co/api/v2/pokemon/${i + 1}`;
     let response = await fetch(url);
     currentPokemonPopUp = await response.json();
@@ -251,6 +294,7 @@ async function openPopUp(i) {
 
 function closePopUp(i) {
     document.getElementById(`popUp${i}`).classList.add('d-none');
+    document.getElementById('body').classList.remove('prevent-scrolling');
 }
 
 function imgSlide(i) {
@@ -284,22 +328,39 @@ function imgSlideBackwards(i) {
 }
 
 function capitalizeFirstLetter(string) {
-    // console.log(string.charAt(0).toUpperCase() + string.slice(1));
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-async function filterNames() {
-    document.getElementById('main-nav').classList.add('d-none');
+function filterNames() {
+    document.getElementById('arrow-nav-start').classList.add('d-none');
+    document.getElementById('arrow-nav-end').classList.add('d-none');
     document.getElementById('gallery_btn').classList.remove('d-none');
-    document.getElementById('search_icon').classList.remove('d-none');
-    let search = document.getElementById('search').value;
-    search = search.toLowerCase();
     document.getElementById('container2').innerHTML = '';
     document.getElementById('container3').innerHTML = '';
     document.getElementById('container4').innerHTML = '';
-    let container = document.getElementById('container');
-    container.innerHTML = '';
+    document.getElementById('container').innerHTML = '';
+    let search = document.getElementById('search').value.toLowerCase();
+    validation(search);
+    filterLoop(loading, search);
+    document.getElementById('search').focus();
+    loading = false;
+}
+
+function validation(search) {
+    let valid = /^[a-zA-Z]+$/;
+    if (search == '') {
+        alert('Type in at least one character!');
+        document.getElementById('search').focus();
+        return false;
+    } else if(!search.match(valid)) {
+        alert('Type in only characters!');
+        document.getElementById('search').focus();
+        return false;
+    }
     loading = true;
+}
+
+async function filterLoop(loading, search) {
     for (let i = 0; i < 200; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i + 1}`;
         let response = await fetch(url);
@@ -307,24 +368,25 @@ async function filterNames() {
         pokemonAmount++;
         let searchBox = searchPokemon.name;
         if (searchBox.indexOf(search) == 0 && search.length >= 1) {
-            container.innerHTML += `
-            <div onclick="openPopUpSearch(${i})" class="pokeball-container" id="pokeballContainer${i}">
-                <h2 class="pokemon-Name-Main-Paige" id="pokename${i}">#${searchPokemon.id} ${capitalizeFirstLetter(searchBox)}</h2>
-                <div class="element" id="element${i}">${capitalizeFirstLetter(searchPokemon.types['0'].type.name)}</div>
-            </div>
-            ${renderPopUpSearch(i)};
-            `;
+            document.getElementById('container').innerHTML += renderPokemonsFilter(i, searchBox);
             changeColor(i);
         }
         if (loading) {
             document.getElementById(`container`).classList.add('removeHover');
             document.getElementById('gallery_btn').classList.add('removeHover');
-            document.getElementById('search').disabled = true;
             document.getElementById('search_icon').classList.add('d-none');
         }
     }
-    addPointerEventSearch()
-    loading = false;
+    addPointerEventSearch();
+}
+
+function renderPokemonsFilter(i, searchBox) {
+    return `
+    <div onclick="openPopUpSearch(${i})" class="pokeball-container" id="pokeballContainer${i}">
+                <h2 class="pokemon-Name-Main-Paige" id="pokename${i}">#${searchPokemon.id} ${capitalizeFirstLetter(searchBox)}</h2>
+                <div class="element" id="element${i}">${capitalizeFirstLetter(searchPokemon.types['0'].type.name)}</div>
+            </div>
+    ${renderPopUpSearch(i)}`;
 }
 
 function checkTypeSearch(i) {
@@ -339,10 +401,9 @@ function checkTypeSearch(i) {
     }
 }
 
-// Gallery-Modus: Hier kann zwischen den Poekodex-Bildern im Searchmodus hin- und hergewechselt werden!
-
 async function openPopUpSearch(i) {
     document.getElementById(`popUp${i}`).classList.remove('d-none');
+    document.getElementById('body').classList.add('prevent-scrolling');
     let url = `https://pokeapi.co/api/v2/pokemon/${i + 1}`;
     let response = await fetch(url);
     searchPokemonPopUp = await response.json();
