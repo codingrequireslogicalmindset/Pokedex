@@ -58,6 +58,8 @@
     height: 282px;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
     margin-top: -16px;
 }
 
@@ -96,7 +98,7 @@
 
 .pokemon-Name-Main-Paige {
     padding-left: 16px;
-    padding-right: 16px; 
+    padding-right: 16px;
 }
 
 .card-box-poke-pic {
@@ -158,6 +160,11 @@ table {
 
     table {
         margin-right: 32px;
+    }
+
+    .table-evolution {
+        border-spacing: 30px 8px !important;
+        margin-left: -18px !important;
     }
 
     .card-box-total {

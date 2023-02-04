@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    height: 100vh;
     scroll-behavior: smooth;
     background-image: url(./img/pokedex-wallpaper.png);
     background-size: cover;
@@ -33,10 +34,11 @@ body {
 }
 
 .search_field:focus {
-    padding-left: 80px;
+    padding-left: 32px;
+    padding-right: 50px;
     padding-top: 8px;
     padding-bottom: 8px;
-    width: 150px;
+    width: 140px;
     height: 20px;
     font-size: 16px;
     outline: none;
