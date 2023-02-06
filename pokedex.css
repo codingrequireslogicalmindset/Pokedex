@@ -162,9 +162,9 @@ body {
 
     .arrow-fixed-left {
         position: fixed;
-        left: 0;
-        top: 15%;
-        margin-left: 16px;
+        right: 0;
+        top: 30%;
+        margin-right: 32px;
         margin-bottom: unset;
         opacity: 0.3;
     }
@@ -172,8 +172,8 @@ body {
     .arrow-fixed-right {
         position: fixed;
         right: 0;
-        top: 15%;
-        margin-right: 16px;
+        top: 40%;
+        margin-right: 32px;
         margin-bottom: unset;
         opacity: 0.3;
     }
