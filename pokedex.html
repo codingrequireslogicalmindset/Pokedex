@@ -26,15 +26,21 @@
     <div id="arrow-nav-start" class="arrow-nav-start">
         <img class="arrow" onclick="previous()" src="./img/arrow-left.png">
         <span><b>Removing last 50 Pokemons!</b></span>
-    </div>  
-    <div class="container" id="container"></div>
+    </div> 
+    <div class="page">
+        <img id="toppage" class="arrow-fixed-right" onclick="scrollDown()" src="./img/arrow-down.png">
+    </div>
+    <div class="container" id="container"></div>  
     <div class="container" id="container2"></div>
     <div class="container" id="container3"></div>
     <div class="container" id="container4"></div>
     <div id="arrow-nav-end" class="arrow-nav-end">
         <span><b>Loading next 50 Pokemons up to 200!</b></span>
         <img class="arrow" onclick="next()" src="./img/arrow-right.png">
-    </div>  
+    </div>
+    <div class="page">
+        <img id="bottompage" class="arrow-fixed-left" onclick="scrollUp()" src="./img/arrow-up.png">  
+    </div>
 </body>
 
 </html>

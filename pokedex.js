@@ -94,9 +94,19 @@ function previous() {
     }
 }
 
+function scrollDown() {
+    window.scrollTo(0, document.body.scrollHeight);
+}
+
+function scrollUp() {
+    window.scrollTo(0, 0);
+}
+
 async function loadPokemons() {
     document.getElementById('arrow-nav-start').classList.remove('d-none');
+    document.getElementById('toppage').classList.remove('d-none');
     document.getElementById('arrow-nav-end').classList.remove('d-none');
+    document.getElementById('bottompage').classList.remove('d-none');
     document.getElementById('gallery_btn').classList.add('d-none');
     document.getElementById('search').value = '';
     document.getElementById('container').innerHTML = '';
@@ -295,7 +305,6 @@ async function openPopUp(i) {
 function closePopUp(i) {
     document.getElementById(`popUp${i}`).classList.add('d-none');
     document.getElementById('body').classList.remove('prevent-scrolling');
-    document.getElementById('search').focus();
 }
 
 function imgSlide(i) {
@@ -334,7 +343,9 @@ function capitalizeFirstLetter(string) {
 
 function filterNames() {
     document.getElementById('arrow-nav-start').classList.add('d-none');
+    document.getElementById('toppage').classList.add('d-none');
     document.getElementById('arrow-nav-end').classList.add('d-none');
+    document.getElementById('bottompage').classList.add('d-none');
     document.getElementById('gallery_btn').classList.remove('d-none');
     document.getElementById('container2').innerHTML = '';
     document.getElementById('container3').innerHTML = '';
@@ -384,9 +395,10 @@ async function filterLoop(loading, search) {
 function renderPokemonsFilter(i, searchBox) {
     return `
     <div onclick="openPopUpSearch(${i})" class="pokeball-container" id="pokeballContainer${i}">
-                <h2 class="pokemon-Name-Main-Paige" id="pokename${i}">#${searchPokemon.id} ${capitalizeFirstLetter(searchBox)}</h2>
-                <div class="element" id="element${i}">${capitalizeFirstLetter(searchPokemon.types['0'].type.name)}</div>
-            </div>
+        <img class="poke_pic" id="pokePic${i}" src="${searchPokemon["sprites"]['other']['official-artwork']['front_default']}">
+        <h2 class="pokemon-Name-Main-Paige" id="pokename${i}">#${searchPokemon.id} ${capitalizeFirstLetter(searchBox)}</h2>
+        <div class="element" id="element${i}">${capitalizeFirstLetter(searchPokemon.types['0'].type.name)}</div>
+    </div>
     ${renderPopUpSearch(i)}`;
 }
 
